@@ -1,0 +1,38 @@
+<h1>Todo List</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Public</th>
+    <th>Name</th>
+  </tr>
+
+  <% @all_tasks.each do |task| %>
+    <tr>
+      <td><%= task.owner %></td>
+      <td><%= task.public_viewable %></td>
+      <td><%= task.name %></td>
+      <td><%= link_to 'Show', task_path(task) %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<h1>Todo List</h1>
+<%= link_to "New Task", new_task_path, id: "new_link" %>
+
+<h2>ALL Tasks</h2>
+<div class="tasks" id="all_tasks">
+  <%= render @all_tasks %>
+</div>
+<h2>Public Tasks</h2>
+<div class="tasks" id="public_tasks">
+  <%= render @public_tasks %>
+</div>
+<h2>Private Tasks</h2>
+<div class="tasks" id="public_tasks">
+  <%= render @private_tasks %>
+</div>

@@ -1,0 +1,6 @@
+<%= form_for task do |f| %>
+  <%= f.check_box :public_viewable %>
+  <%= f.submit "Update" %>
+  <%= f.label :public_viewable, task.name %>
+  <%= link_to "(remove)", task, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
