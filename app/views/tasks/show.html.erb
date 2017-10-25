@@ -1,16 +1,53 @@
-<h1>Show Task details</h1>
+<h1>Task details</h1>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @task.owner %>
-</p>
+<% if @task.nil? %>
+  <p>
+    <strong>NO TASKS IN THE SYSTEM!</strong>
+  </p>
+<% else %>
+  <p>
+    <strong>Owner:</strong>
+    <%= @task.owner %>
+  </p>
+  <p>
+    <strong>Public:</strong>
+    <%= @task.public_viewable %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= @task.name %>
+  </p>
+  <% if @task.owner == current_user.email %>
+    <p><%= link_to 'Edit Task', edit_task_path(@task) %></p>
+  <% end %>
 
-<p>
-  <strong>Public:</strong>
-  <%= @task.public_viewable %>
-</p>
+  <br>
+  <br>
 
-<p>
-  <strong>Public:</strong>
-  <%= @task.name %>
-</p>
+  <h2>SubTasks</h2>
+
+  <% if @task.subtasks.empty? %>
+    <p>
+      <strong>NO subtasks to display</strong>
+    </p>
+  <% else %>
+    <% @task.subtasks.each do |subtask| %>
+      <p>
+        <strong>Name:</strong>
+        <%= subtask.name %>
+        <% if @task.owner == current_user.email %>
+          <%= link_to 'Edit', edit_task_subtask_path(@task, subtask.id) %>
+          <%= link_to 'Delete', task_subtask_path(@task, subtask.id), method: :delete, data: { confirm: 'Are you sure you want to permanently delete this subtask?' } %>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+  <% if @task.owner == current_user.email %>
+    <p><%= button_to 'Create Subtask', new_task_subtask_path(@task), method: :get %></p>
+  <% end %>
+
+  <br>
+  <br>
+
+  <p><%= link_to 'Back to Todo List', tasks_path %></p>
+<% end %>

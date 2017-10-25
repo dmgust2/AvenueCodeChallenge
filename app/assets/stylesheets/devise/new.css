@@ -1,0 +1,48 @@
+#sign_in_up_div {
+    margin-left:35%;
+    margin-right: 35%;
+    margin-top: 10%;
+    padding: 0px;
+    max-width: 550px;
+}
+
+#sign_in_up_label_div {
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 15px;
+}
+
+#sign_in_up_label {
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+    font-family: Helvetica;
+}
+
+#sign_in_up_devise_link_div {
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 15px;
+}
+
+#sign_in_up_form_div {
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 15px;
+}
+
+#sign_in_up_form_email_div {
+    text-align: left;
+    padding-left: 20px;
+}
+
+#sign_in_up_form_password_div {
+    text-align: left;
+    padding-left: 20px;
+}
+
+#sign_in_up_submit_div {
+    text-align:center;
+    padding-right: 10px;
+    margin-top: 15px;
+}

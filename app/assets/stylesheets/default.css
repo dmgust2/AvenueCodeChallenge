@@ -1,0 +1,84 @@
+.form_bg_gray_grad {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+
+.default_border {
+    border:1px;
+    border-radius:5px;
+    border-style: solid;
+    border-color:#d3d3d3;
+}
+
+table.data_table {
+    background-color: white;
+    border-collapse: collapse;
+    border-color: #DCDCDC;
+    border-style: solid;
+    border-width: 1px;
+    border-spacing: 20px;
+}
+
+th.data_table {
+    text-align: left;
+    color: black;
+    font-size: 100%;
+    font-family: Helvetica;
+    font-weight:bold;
+    background-color: #DCDCDC;
+    padding-left: 10px;
+    padding-right: 10px;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+    border-left-color: white;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-top-color: #DCDCDC;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-bottom-color: #DCDCDC;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+td.data_table {
+    text-align: left;
+    color: black;
+    font-size: 90%;
+    font-family: tahoma;
+    font-weight:normal;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+    border-left-color: #DCDCDC;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: #DCDCDC;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: #DCDCDC;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-bottom-color: #DCDCDC;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+tr.odd_row {
+    background-color: white;
+    text-align: left;
+}
+
+tr.even_row {
+    background-color: #f0f8ff;
+    text-align: left;
+}

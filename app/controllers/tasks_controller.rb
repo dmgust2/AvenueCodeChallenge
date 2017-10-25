@@ -1,94 +1,60 @@
 class TasksController < ApplicationController
-  # Authenticate (user login) prior to any actions (index, new)
+  # Authenticate (user login) prior to any actions
   before_action :authenticate_user!
 
-  # Devise notes:
-  # - For the current signed-in user: current_user
-  # - To verify if a user is signed in: user_signed_in?
-  # - Access the session for this scope: user_session
 
-  # Display tasks in the system according to public_viewable
   def index
-    begin
-      # TODO: For testing: Display all tasks in the DB
-      @all_tasks = Task.all
-
-      @public_tasks = Task.where(public_viewable: true)
-
-      @private_tasks = Task.where(public_viewable: false)
-
-      # DEBUG
-      logger.debug("DEBUG: TasksController:index:current_user #{current_user}")
-
-      # Display ALL public tasks and any private tasks for the signed-in user
-      # TODO: Add some kind of filter? I want ALL public tasks and then any of the signed-in user's private tasks
-      #@task_list = Task.where(:public_viewable == true).and(:owner == current_user, :public_viewable == false)
-    rescue Exception => e
-      logger.debug(e.backtrace.awesome_inspect)
-      logger.error("ERROR: TasksController:index: #{e.message}")
-    end
+    # Display ALL public tasks and any private tasks for the signed-in user
+    @task_list = Task.where("public_viewable = ? OR owner = ?", true, current_user.email)
   end
 
   def show
-    begin
-      @task = Task.find(params[:id])
-
-    rescue Exception => e
-      logger.error("ERROR: TasksController:show: #{e.message}")
-    end
+    # TODO: Add error handling (e.g. if task was deleted by owner)
+    @task = Task.find(params[:id])
   end
 
   def new
-    begin
-      @task = Task.new
+    @task = Task.new
 
-    rescue Exception => e
-      logger.error("ERROR: TasksController:new: #{e.message}")
-    end
+    # This basically creates an empty shell, needed for seeding and forms
+    @task.subtasks.build
+  end
+
+  def edit
+    @task = Task.find(params[:id])
   end
 
   def create
-    begin
-      @task = Task.create!(allowed_params)
+    @task = Task.new(allowed_params)
 
-      redirect_to tasks_url
-
-    rescue Exception => e
-      logger.debug(e.backtrace.awesome_inspect)
-      logger.error("ERROR: TasksController:create: #{e.message}")
+    if @task.save
+      redirect_to root_url, notice: 'Successfully created task.'
+    else
+      render :new
     end
   end
 
   def update
-    begin
-      @task = Task.find(params[:id])
-      @task.update_attributes!(allowed_params)
+    @task = Task.find(params[:id])
 
-      redirect_to tasks_url
-
-    rescue Exception => e
-      logger.debug(e.backtrace.awesome_inspect)
-      logger.error("ERROR: TasksController:update: #{e.message}")
+    if @task.update(allowed_params)
+      redirect_to root_url, notice: 'Successfully updated task.'
+    else
+      render :edit
     end
   end
 
   def destroy
-    begin
-      @task = Task.destroy(params[:id])
+    @task = Task.destroy(params[:id])
 
-      redirect_to tasks_url
-
-    rescue Exception => e
-      logger.debug(e.backtrace.awesome_inspect)
-      logger.error("ERROR: TasksController:destroy: #{e.message}")
-    end
+    redirect_to root_url, notice: 'Successfully deleted this task and any subtasks.'
   end
 
 
   private
 
     def allowed_params
-      params.require(:task).permit(:owner, :public_viewable, :name)
+      params.require(:task).permit(:owner, :public_viewable, :name, subtasks_attributes: [:id, :name, :_destroy])
     end
 
 end

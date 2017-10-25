@@ -8,6 +8,16 @@
 
 
 # TODO: Quick testing of tasks
-Task.create! owner: "dmgust@gmail.com", public_viewable: true, name: "Watch football"
-Task.create! owner: "dmgust@gmail.com", public_viewable: true, name: "Watch GOT"
-Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Play guitar!"
+# Clear Tasks
+Task.delete_all
+Subtask.delete_all
+
+# Add parent tasks
+@task1 = Task.create! owner: "dmgust@gmail.com", public_viewable: true, name: "Watch football!"
+Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Watch GOT"
+@task3 = Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Play guitar!"
+
+# Add subtasks
+Subtask.create! task_id: @task1.id, name: "Watch Vikes!"
+Subtask.create! task_id: @task3.id, name: "Jam on the blues"
+Subtask.create! task_id: @task3.id, name: "Learn solo"

@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20171022234837) do
 
   create_table "subtasks", force: :cascade do |t|
-    t.integer "tasks_id", null: false
+    t.integer "task_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tasks_id"], name: "index_subtasks_on_tasks_id"
+    t.index ["task_id"], name: "index_subtasks_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|

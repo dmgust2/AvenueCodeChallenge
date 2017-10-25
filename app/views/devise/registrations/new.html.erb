@@ -1,29 +1,38 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div id="sign_in_up_div" class="form_bg_gray_grad default_border">
+  <div id="sign_in_up_label_div">
+    <label id="sign_in_up_label" >Sign up</label>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div id="sign_in_up_devise_link_div">
+    <%= render "devise/shared/links" %>
+    <%= devise_error_messages! %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <div id="sign_in_up_form_div">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <div id="sign_in_up_form_email_div" >
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
 
-<%= render "devise/shared/links" %>
+        <div id="sign_in_up_form_password_div">
+          <%= f.label :password %><br />
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: 'off' %>
+        </div>
+
+        <div id="sign_in_up_form_password_div">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div id="sign_in_up_submit_div">
+          <%= f.submit 'Sign up' %>
+        </div>
+
+    <% end %>
+  </div>
+</div>

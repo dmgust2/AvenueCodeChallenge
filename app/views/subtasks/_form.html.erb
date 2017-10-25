@@ -1,0 +1,17 @@
+<%= simple_form_for @subtask, :url => @subtask.new_record? ? url_for(action: 'create') : url_for(action: 'update') do |f| %>
+  <% if @subtask.errors.any? %>
+    <div id="error_message">
+      <h2>
+        <%= pluralize(@subtask.errors.count, "error") %> Not able to save subtask:
+      </h2>
+      <ul>
+        <% @subtask.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p><%= f.input :name, label: 'Subtask Name:' %></p>
+  <p><%= f.button :submit %></p>
+<% end %>

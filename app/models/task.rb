@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
-  # Nested subtasks
-  has_many :sub_tasks
-  accepts_nested_attributes_for :sub_tasks,  :reject_if => :all_blank, :allow_destroy => true
+  has_many :subtasks, inverse_of: :task, :dependent => :delete_all
+  accepts_nested_attributes_for :subtasks, :allow_destroy => true
 
-
+  # Validation
+  validates :name, presence: true, length: { minimum: 1 }
 end
