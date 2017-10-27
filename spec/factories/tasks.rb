@@ -1,20 +1,22 @@
+
 FactoryGirl.define do
 
-  factory :task_1 do
-    owner               { Faker::Internet.email }
+  factory :pub_task_1, class: Task do
+    owner               'user@example.com'
     public_viewable     true
-    name                'Dummy Test Public task 1'
+    name                'user@example.com Public task'
   end
 
-  factory :task_2 do
+  factory :private_task_2, class: Task do
+    owner               'user@example.com'
+    public_viewable     false
+    name                'user@example.com Private task'
+  end
+
+  factory :other_private_task_3, class: Task do
     owner               { Faker::Internet.email }
     public_viewable     false
-    name                'Dummy Test Private task 2'
+    name                'Other user private task'
   end
 
-  factory :task_3 do
-    owner               { Faker::Internet.email }
-    public_viewable     true
-    name                'Dummy Test Public task 3'
-  end
 end

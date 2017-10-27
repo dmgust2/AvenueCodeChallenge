@@ -1,0 +1,10 @@
+<%= div_for subtask, :url => subtask.new_record? ? url_for(action: 'create') : url_for(action: 'update'), :authenticity_token => true do %>
+  <p>
+    <strong>Name:</strong>
+    <%= subtask.name %>
+    <% if @task.owner == current_user.email %>
+      <%= link_to 'Edit', edit_task_subtask_path(@task, subtask.id), remote: true %>
+      <%= link_to 'Delete', task_subtask_path(@task, subtask.id), method: :delete, remote: true, data: { confirm: 'Are you sure you want to permanently delete this subtask?' } %>
+    <% end %>
+  </p>
+<% end %>

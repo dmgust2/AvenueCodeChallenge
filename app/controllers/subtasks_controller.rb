@@ -20,39 +20,42 @@ class SubtasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:task_id])
-    @subtask = Subtask.find(params[:id])
+      @task = Task.find(params[:task_id])
+      @subtask = Subtask.find(params[:id])
   end
 
-  # TODO: Get Ajax call working...
   def create
     @task = Task.find(params[:task_id])
     @subtask = @task.subtasks.create(allowed_params)
 
-    respond_to do |f|
-      f.html { redirect_to task_path(@task), notice: 'Successfully created subtask.' }
-      f.js
+    respond_to do |format|
+      format.html { redirect_to task_path(@task) }
+      format.js
     end
   end
 
-  # TODO: If time, Get Ajax call working...
   def update
+    @task = Task.find(params[:task_id])
     @subtask = Subtask.find(params[:id])
 
-    if @subtask.update(allowed_params)
-      @task = Task.find(params[:task_id])
-      redirect_to task_path(@task), notice: 'Successfully updated subtask.'
-    else
-      render :edit
+    respond_to do |format|
+      if @subtask.update(allowed_params)
+        format.html { redirect_to task_path(@task) }
+        format.js
+      else
+        render :edit
+      end
     end
   end
 
-  # TODO: If time, Get Ajax call working...
   def destroy
     @task = Task.find(params[:task_id])
     @subtask = Subtask.destroy(params[:id])
 
-    redirect_to task_path(@task), notice: 'Successfully deleted subtask.'
+    respond_to do |format|
+      format.html { redirect_to task_path(@task) }
+      format.js
+    end
   end
 
 

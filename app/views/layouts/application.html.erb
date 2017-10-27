@@ -12,12 +12,13 @@
 
   <body>
     <%= yield %>
-
-    <% if false %>
-      # TODO: verify below
-      # Flash messages for Devise
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <br>
+    <br>
+    <div id="notice_alert_div" class="bold_green_text">
+      <p class="notice"><%= notice %></p>
+    </div>
+    <div id="notice_alert_div" class="bold_red_text">
+      <p class="alert"><%= alert %></p>
+    </div>
   </body>
 </html>

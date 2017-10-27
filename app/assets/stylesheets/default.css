@@ -1,3 +1,77 @@
+.bold_black_text {
+    color: black;
+    font-weight: bold
+}
+
+.bold_red_text {
+    color: red;
+    font-weight: bold
+}
+
+.bold_green_text {
+    color: green;
+    font-weight: bold
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%
+}
+
+.default_centered_div {
+    margin-left: 30%;
+    margin-right: 40%;
+    padding: 0;
+}
+
+.default_label_div {
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 15px;
+}
+
+.default_label {
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+    font-family: Helvetica;
+}
+
+.default_button_div {
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 20px;
+}
+
+.default_link_div {
+    text-align: left;
+    margin-top: 40px;
+}
+
+.default_form_div {
+    text-align: left;
+    padding-left: 5px;
+    margin-top: 15px;
+}
+
+.default_text_div {
+    text-align: left;
+    padding-left: 20px;
+}
+
 .form_bg_gray_grad {
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
@@ -18,6 +92,7 @@
 
 table.data_table {
     background-color: white;
+    padding-left: 15px;
     border-collapse: collapse;
     border-color: #DCDCDC;
     border-style: solid;
@@ -32,17 +107,22 @@ th.data_table {
     font-family: Helvetica;
     font-weight:bold;
     background-color: #DCDCDC;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     word-wrap: break-word;
     -ms-word-wrap: break-word;
-    border-left-color: white;
+    border-left-color: black;
     border-left-style: solid;
     border-left-width: 1px;
-    border-top-color: #DCDCDC;
+    border-right-color: black;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: black;
     border-top-style: solid;
     border-top-width: 1px;
-    border-bottom-color: #DCDCDC;
+    border-bottom-color: black;
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
@@ -53,12 +133,8 @@ td.data_table {
     font-size: 90%;
     font-family: tahoma;
     font-weight:normal;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    word-wrap: break-word;
-    -ms-word-wrap: break-word;
+    padding:5px 20px 5px 20px;
+    white-space: nowrap;
     border-left-color: #DCDCDC;
     border-left-style: solid;
     border-left-width: 1px;

@@ -1,0 +1,4 @@
+$('form').hide();
+// Replace the updated subtask in the list -> id: edit_subtask_12
+$('form#<%= dom_id(@subtask, :edit) %>').replaceWith('<%= j render partial: 'subtask', locals: { subtask: @subtask } %>');
+$('form').show();

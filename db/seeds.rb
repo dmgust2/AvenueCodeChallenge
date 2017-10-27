@@ -7,17 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# TODO: Quick testing of tasks
+# TODO: This is for quick testing of tasks, remove for PROD
 # Clear Tasks
 Task.delete_all
 Subtask.delete_all
 
 # Add parent tasks
-@task1 = Task.create! owner: "dmgust@gmail.com", public_viewable: true, name: "Watch football!"
-Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Watch GOT"
+@task1 = Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Watch NFL football!"
+Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Watch HBO!"
 @task3 = Task.create! owner: "dmgust@gmail.com", public_viewable: false, name: "Play guitar!"
 
 # Add subtasks
 Subtask.create! task_id: @task1.id, name: "Watch Vikes!"
 Subtask.create! task_id: @task3.id, name: "Jam on the blues"
-Subtask.create! task_id: @task3.id, name: "Learn solo"
+Subtask.create! task_id: @task3.id, name: "Learn various cool solos"

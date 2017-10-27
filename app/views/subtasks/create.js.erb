@@ -1,0 +1,5 @@
+$('form').hide();
+// Append the new subtask to the list
+$('.task_subtasks').append('<%= j render partial: 'subtask', locals: { subtask: @subtask } %>');
+// Show the New Subtask button once again
+$('.new_subtask_button').show();

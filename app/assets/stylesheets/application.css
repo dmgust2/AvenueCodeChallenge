@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+#notice_alert_div {
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 10%;
+    padding: 0;
+    max-width: 550px;
+}

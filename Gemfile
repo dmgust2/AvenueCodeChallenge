@@ -5,14 +5,19 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# My added gems
+# DMG: Added gems
 gem 'awesome_print'
 gem 'devise'
 gem 'simple_form'
 gem 'responders'
-# This is needed for Windows!
+# DMG: This is needed for Windows!
 gem 'coffee-script-source', '1.8.0'
-
+# DMG: Apparently div_for was moved out of ActionView in Rails 5, so need this to continue using
+gem 'record_tag_helper', '~> 1.0'
+# DMG: Added to support JS, JQuery, etc.
+gem 'jquery-turbolinks'
+gem 'webpacker', '~> 3.0'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -47,9 +52,10 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.5'
   gem 'selenium-webdriver'
-  # Added for Testing
+  # DMG: Added for Testing
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -57,11 +63,13 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-# Added for testing
+# DMG: Added for testing
 group :test do
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
   gem 'faker'
+  gem 'minitest-reporters'
+  #gem 'win32console'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

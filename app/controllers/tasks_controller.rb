@@ -9,14 +9,19 @@ class TasksController < ApplicationController
   end
 
   def show
-    # TODO: Add error handling (e.g. if task was deleted by owner)
-    @task = Task.find(params[:id])
+    begin
+      @task = Task.find(params[:id])
+    rescue Exception => e
+      logger.error("ERROR: TasksController:show: #{e.message}")
+      # TODO: Can probably add better handling...
+      redirect_to root_url, alert: 'This task is no longer in the system; likely removed by the owner'
+    end
   end
 
   def new
     @task = Task.new
 
-    # This basically creates an empty shell, needed for seeding and forms
+    # This basically creates an empty subtasks shell, needed for seeding and forms
     @task.subtasks.build
   end
 
@@ -27,10 +32,14 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(allowed_params)
 
-    if @task.save
-      redirect_to root_url, notice: 'Successfully created task.'
-    else
-      render :new
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to root_url, notice: 'Successfully created task.' }
+        format.json { render :index, status: :created, location: @task }
+      else
+        format.html { render :new }
+        format.json { render json: @task.errors, status: :unprocessable_entity}
+      end
     end
   end
 
