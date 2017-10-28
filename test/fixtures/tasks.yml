@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 pub_task_1:
+  id:               1
   owner:            'user@example.com'
   public_viewable:  true
   name:             'user@example.com Public task'
 
 private_task_2:
+  id:               2
   owner:            'user@example.com'
   public_viewable:  false
   name:             'user@example.com Private task'

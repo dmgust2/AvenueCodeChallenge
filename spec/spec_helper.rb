@@ -104,8 +104,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-
-  # DMG: Added for my modules
-  config.include ApiHelper, type: :api
-  config.include Requests::JsonHelpers, type: :api
 end

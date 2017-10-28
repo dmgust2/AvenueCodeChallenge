@@ -32,12 +32,13 @@ Configuration:
 
 Database:
 * SQLite3
-* I cleared out the DEV DB. No seeding is necessary, users can sign up and start 
+* No seeding is necessary, users can sign up and start 
 adding tasks. You can load some dummy data by running: rails db:seed --trace
 
 Testing:
+* Most of the work here was setup. Covered Tasks and Subtasks controllers, models, etc.
 * Rspec: bundle exec rspec spec
-* Rails (mini test): rake test
+* Rails (minitest): rake test
 
 Deployment Instructions:
 * Simply run Development: TodoList
@@ -57,7 +58,7 @@ Potential Future Enhancements:
 * Improved Todo List main page: Aside from the general look and feel, with more time I could easily 'Ajaxify' 
 the task operations as well and then eliminate the need for various other pages (new task, edit task, task details) and 
 do everything on the main page. I think not being able to see subtasks on the main page is my biggest criticism.
-* Improved automated test coverage
+* Improved automated test coverage, including UI tests
 * Fancy table stuff: I briefly looked into expandable/collapsible table rows so you could display tasks and subtasks in 
 the same table view (bundled with inline creation/editing). I would most likely use plug-ins for this (e.g. DataTables 
 and JEditable looks promising) which would provide lots of other features like sorting, filtering, search, etc. assuming
