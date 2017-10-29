@@ -41,6 +41,11 @@
     padding-left: 20px;
 }
 
+#sign_in_up_form_password_conf_div {
+    text-align: left;
+    padding-left: 20px;
+}
+
 #sign_in_up_submit_div {
     text-align:center;
     padding-right: 10px;
